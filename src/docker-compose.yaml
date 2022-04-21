@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     environment: 
      - ASPNETCORE_ENVIRONMENT=Development
-     - REDIS_CONNECTION_STRING="sharon:32768"
+     - REDIS_CONNECTION_STRING="${REDIS_CONNECTION_STRING}"
      - ASPNETCORE_URLS=http://+:80     
     networks:
       - flownet
