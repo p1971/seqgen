@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  seqgen:
+    container_name: seqgen
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment: 
+     - ASPNETCORE_ENVIRONMENT=Development
+     - REDIS_CONNECTION_STRING="sharon:32768"
+     - ASPNETCORE_URLS=http://+:80     
+    networks:
+      - flownet
+    ports:
+      - "49728:80"
+
+networks:
+  flownet:
+    driver: bridge
