@@ -1,10 +1,10 @@
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 WebApplication app = builder.Build();
 
-string redisConnectionString = Environment.GetEnvironmentVariable("REDIS_CONNECTION_STRING") ?? "localhost:6379";
+string redisConnectionString = app.Configuration.GetValue<string>("REDIS_CONNECTION_STRING") ?? "localhost:6379";
 
 ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(redisConnectionString);
 
