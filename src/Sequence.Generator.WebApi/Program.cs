@@ -12,7 +12,6 @@ ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(redisConnectionStrin
 
 app.MapGet(@"/api/seq/{key}/{prefix=}/{suffix=}/{digits:int=10}", async (string key, string prefix, string suffix, int digits) =>
 {
-    System.Console.WriteLine($"... : {key}");
     try
     {
         IDatabase db = redis.GetDatabase();
