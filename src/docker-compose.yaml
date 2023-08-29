@@ -7,13 +7,15 @@ services:
       dockerfile: Dockerfile
     environment: 
      - ASPNETCORE_ENVIRONMENT=Development
-     - REDIS_CONNECTION_STRING="${REDIS_CONNECTION_STRING}"
-     - ASPNETCORE_URLS=http://+:80     
+     - REDIS_CONNECTION_STRING=${REDIS_CONNECTION_STRING}
+     - ASPNETCORE_URLS=http://+:42501     
+     - DOTNET_USE_POLLING_FILE_WATCHER=true
+     - Logging__Console__FormatterName=Simple
     networks:
-      - flownet
+      - devnet
     ports:
-      - "49728:80"
+      - "49728:42501"
 
 networks:
-  flownet:
-    driver: bridge
+  devnet:
+    external: true    
